@@ -3,12 +3,13 @@ uploadFile =function() {
 
     $.ajax({
         type: "POST",
-        url: "http://344fae2a.ngrok.io/uploads/"+file.name,
-        data: file,
+        url: "http://cfe81af2.ngrok.io",
+
+        files : file,
         processData: false,
         contentType: false,
         success: function (data) {
             console.log('yo');    }
     });
-
+//d
 }
