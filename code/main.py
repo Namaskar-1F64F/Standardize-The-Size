@@ -1,4 +1,5 @@
 from flask import Flask, request, redirect, url_for, render_template, send_from_directory
+from flask_cors import CORS, cross_origin
 import os
 from werkzeug.utils import secure_filename
 import json
@@ -9,6 +10,7 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 gfilename = ''
 
 app = Flask(__name__)
+CORS(app)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 def allowed_file(filename):
