@@ -12,7 +12,7 @@ $(function() {
             async: false,
             success: function(data) {
                 var last = window.location.href.substr(window.location.href.lastIndexOf('/') + 1);
-                window.location.href = window.location.href.replace(last, "profile.html?w="+data.substring(2,7)+"&h="+data.substring(19,24));
+                window.location.href = window.location.href.replace(last, "firstprofile.html?w="+data.substring(2,7)+"&h="+data.substring(19,24));
             }
         });
     });
@@ -28,7 +28,7 @@ $(function() {
             async: false,
             success: function(data) {
                 var last = window.location.href.substr(window.location.href.lastIndexOf('/') + 1);
-                window.location.href = window.location.href.replace(last, "profile2.html?w="+data.substring(2,7)+"&h="+data.substring(19,24));
+                window.location.href = window.location.href.replace(last, "profile.html?w="+data.substring(2,7)+"&h="+data.substring(19,24));
             }
         });
     });
