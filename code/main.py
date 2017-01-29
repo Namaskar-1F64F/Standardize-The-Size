@@ -3,8 +3,11 @@ from flask_cors import CORS, cross_origin
 import os
 from werkzeug.utils import secure_filename
 import json
+from object_size import ip
 
-UPLOAD_FOLDER =  '/home/rratcliffe/github/Standardize-The-Size/flask/uploads'
+#print ip('pictures/j2.jpg',2.2)
+
+UPLOAD_FOLDER =  '/home/rratcliffe/github/Standardize-The-Size/code/uploads'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 gfilename = ''
@@ -33,12 +36,20 @@ def upload_file():
         # if user does not select file, browser also
         # submit a empty part without filename
         if file.filename == '':
+            return "Filename empty"
             #flash('No selected file')
             return redirect(request.url)
-        if file and allowed_file(file.filename):
+        #if file and allowed_file(file.filename):
+        if file:
             filename = secure_filename(file.filename)
             gfilename = filename
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            print filename
+            x=[ip("uploads/"+filename,2.2,'height'),ip("uploads/"+filename,2.2,'width')]
+            print x
+            return str(x)
+
+
             #return redirect(url_for('uploaded_file',
                                     #filename=filename))
            # return render_template("index.html")
