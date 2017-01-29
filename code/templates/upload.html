@@ -33,22 +33,21 @@
 </head>
 
 <body id="page-top" class="index">
-
+<div id="wrapper">
 <!-- Navigation -->
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header page-scroll">
 
-            <a class="navbar-brand" href="#page-top">JJ</a>
+            <a class="navbar-brand" href="#page-top" style="color: #FFD6AA;font-size: 25px;border-right: 2px solid;">JJ</a>
         </div>
-        <img src="../static/img/Camera.svg" style="height: 25px;top: 13px;position: absolute;right: 224.5px;">
-        <img src="../static/img/ShoppingCart.svg" style="height: 26px;top: 13px;position: absolute;right: 118px;">
-        <img src="../static/img/Profile.svg" style="height: 30px;top: 11px;position: absolute;right: 11px;">
+        <img class="camera" src="../static/img/Camera.svg" style="height: 25px;top: 13px;position: absolute;right: 248.5px;">
+        <img class="shop" src="../static/img/ShoppingCart.svg" style="height: 26px;top: 13px;position: absolute;right: 129px;">
+        <img class="profile" src="../static/img/Profile.svg" style="height: 30px;top: 11px;position: absolute;right: 11px;">
     </div>
     <!-- /.container-fluid -->
 </nav>
-
 <!-- Header -->
 <header>
     <div class="container">
@@ -56,13 +55,13 @@
             <div class="col-lg-12">
                 <span class="h1"style="width: 100%;right: 0;">Measure a pair of jeans!</span>
                 <form id="text"  method="post">
-                    <div class="form-group">
-                    <label class="h3">What brand are your jeans?</label>
-                    <input class="form-control" style="text-align:center;font-size:25px;border:none;height:50px;background:transparent;box-shadow: inset 0 -1px 0px;"type="text" value="Brand" id="brandInput">
+                    <div class="form-group"style="margin-bottom:0;">
+                        <label class="h3" style="margin-bottom:0;">What brand are your jeans?</label>
+                        <input class="form-control" style="margin-bottom:0;text-align:center;font-size:25px;border:none;height:50px;background:transparent;box-shadow: inset 0 -1px 0px;"type="text" placeholder="Brand" id="brandInput">
                     </div>
-                    <div class="form-group">
-                    <label class="h3">What size are your jeans?</label>
-                    <input class="form-control" style="text-align:center;font-size:25px;border:none;height:50px;background:transparent;box-shadow: inset 0 -1px 0px;"type="text" value="5" id="sizeInput">
+                    <div class="form-group"style="margin-bottom:0;">
+                        <label class="h3">What size are your jeans?</label>
+                        <input class="form-control" style="text-align:center;font-size:25px;border:none;height:50px;background:transparent;box-shadow: inset 0 -1px 0px;"type="text" placeholder="5" id="sizeInput">
                     </div>
                 </form>
 
@@ -70,13 +69,13 @@
 
                     <div class="col-lg-1"style="padding:10px;"> </div>
 
-                    <div class="m-t-10" id="imgBox" style="display: block;margin:auto;max-height:200px;max-width:200px;background: #656CCA;-moz-border-radius: 20px;-webkit-border-radius: 20px;background-position:50% 50%;background-repeat:no-r;border-radius: 100%;height: 350px;width: 100%;">
+                    <div class="m-t-10" id="imgBox" style="display: block;margin:auto;max-height:150px;max-width:150px;background: #6D92A0;-moz-border-radius: 20px;-webkit-border-radius: 20px;background-position:50% 50%;background-repeat:no-r;border-radius: 100%;height: 150px;width: 100%;">
                         <img class="img-responsive" src="../static/img/Camera.svg" alt="" style="width: 50%;top: 34%;position: relative;max-width: 200px;max-height: 200px;"><input type="file" upload="file" name="file" value="" class="imgInput" style="opacity: 0;position: relative;height: 80%;top: -30%;width: 100%;">
                     </div><div class="col-lg-1"style="padding:10px;"> </div>
 
                     <fieldset>
 
-                        <button class="btn btn-primary" style="height:50px;width:100px"id="upload-file-btn2" type="button">Upload</button>
+                        <button class="btn btn-primary" style="height:50px;width:100px"id="upload-file-btn" type="button">Upload</button>
                     </fieldset>
                 </form>
 
@@ -106,6 +105,15 @@
 
 <script src="../static/js/lib/underscore.js"></script>
 <script src="../static/js/lib/backbone.js"></script>
+<script>
+
+    var last = window.location.href.substr(window.location.href.lastIndexOf('/') + 1);
+    $(document).ready(function(){$('#wrapper').fadeIn();});
+    $('.camera').on('click',function(){window.location.href = window.location.href.replace(last, "upload.html");});
+    $('.shop').on('click',function(){window.location.href = window.location.href.replace(last, "store.html");});
+    $('.profile').on('click',function(){window.location.href = window.location.href.replace(last, "profile.html");});
+</script>
+</div>
 </body>
 
 </html>
