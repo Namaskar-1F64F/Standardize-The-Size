@@ -1,9 +1,10 @@
 $(function() {
+  var url="http://0dcab4a7.ngrok.io";
     $('#upload-file-btn').click(function() {
         var form_data = new FormData($('#file')[0]);
         $.ajax({
             type: 'POST',
-            url: 'http://cfe81af2.ngrok.io/',
+            url: url, 
             data: form_data,
             contentType: false,
             cache: false,
@@ -19,7 +20,7 @@ $(function() {
         var form_data = new FormData($('#file')[0]);
         $.ajax({
             type: 'POST',
-            url: 'http://cfe81af2.ngrok.io/',
+            url: url,
             data: form_data,
             contentType: false,
             cache: false,
