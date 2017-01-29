@@ -29,6 +29,7 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <link rel="stylesheet" href="../static/css/blueimp-gallery.min.css">
 
 </head>
 
@@ -72,15 +73,41 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <div class="h1" style="width: 100%;right: 0;">Welcome to the Jean Jeanie, where everything fits!</div>
-                <div class="h3"></br>It appears to be your first time here.</br> To get started, submit your favorite pair of jeans so we can get your perfect fit.</div>
-                <div class="col-lg-1"style="padding:10px;"> </div>
-                    <btn class="btn btn-primary m-t-10" id="imgBox" style="display: block;margin:auto;max-height:200px;max-width:200px;background: #656CCA;background-position:50% 50%;height: 350px;width: 100%;">
-                        <img class="img-responsive" src="../static/img/clothes.svg" alt="" style="width: 50%;top: 26%;position: relative;max-width: 200px;max-height: 200px;">                    </btn>
+
+                <div>
+                    <div class="input-group">
+                        <input class="form-control" style="text-align:center;font-size:25px;border:none;height:50px;background:transparent;box-shadow: inset 0 -1px 0px;" type="text" value="Brand" id="brandInput">
+                        <span class="input-group-addon" style="background: transparent;border: none;padding: 0px;margin: 0px;">
+                    <img src="../static/img/loupe.svg" style="height: 35px;background: transparent;padding: 0px;margin: 0px;">
+                </span>
+                    </div>
+                </div>
+                <span id="size" class="h1"></span>
+                </br>
+                <span id="size2" class="h1"></span>
+                </br></br></br>
+                </br></br></br>
+                </br></br></br>
+                </br></br></br>
+
+
 
 
             </div>
         </div>
+        <div class="recommended">
+            <span class="h3">Recommended for you</span>
+        <div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel">
+            <div class="slides"></div>
+            <h3 class="title"></h3>
+            <a class="prev">‹</a>
+            <a class="next">›</a>
+            <a class="play-pause"></a>
+            <ol class="indicator"></ol>
+        </div>
+        </div>
+        </br></br></br>
+
     </div>
 </header>
 
@@ -90,7 +117,12 @@
         <i class="fa fa-chevron-up"></i>
     </a>
 </div>
-
+<div id="links">
+    <a href="../static/img/jeans1.jpg" title="Jean 1">
+    </a><a href="../static/img/jeans2.jpg" title="Jean 2">
+</a><a href="../static/img/jeans3.jpg" title="Jean 3">
+</a>
+</div>
 <!-- jQuery -->
 <script src="../static/vendor/jquery/jquery.min.js"></script>
 
@@ -105,9 +137,27 @@
 
 <script src="../static/js/lib/underscore.js"></script>
 <script src="../static/js/lib/backbone.js"></script>
-<script>var last = window.location.href.substr(window.location.href.lastIndexOf('/') + 1);
 
-$('#imgBox').on('click',function(){window.location.href = window.location.href.replace(last, "firstupload.html");});
+<script src="../static/js/blueimp-gallery.min.js"></script>
+
+<script>
+    var leviLinks = ["http://www.levi.com/US/en_US/mens-jeans/p/045114406","http://www.levi.com/US/en_US/womens-jeans/p/125010229","http://www.levi.com/US/en_US/mens-jeans/p/005010638","http://www.levi.com/US/en_US/womens-jeans/p/188840002"];
+    $( '.brandInput' ).bind('keypress', function(e){
+        if ( e.keyCode == 13 ) {
+
+            $('.recommended').remove();
+        }
+    });
+    $(window).load(function(){
+        $(".alert").alert('show')    });
+    var gallery = blueimp.Gallery(
+        document.getElementById('links').getElementsByTagName('a'),
+        {
+            container: '#blueimp-gallery-carousel',
+            carousel: true
+        }
+    );
+    $('#blueimp-gallery-carousel').on('click',function(){window.location=links[gallery.getIndex()]});
 </script>
 </body>
 

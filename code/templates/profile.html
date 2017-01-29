@@ -73,13 +73,12 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <span style="width: 100%;right: 0;font-size: 19px;">Your jeans have been successfully submitted!</span>
-                </br></br>
+
 
                     <span id="size" class="h1"></span>
             </br>
                 <span id="size2" class="h1"></span>
-                    </br></br>
+                    </br></br></br>
                     <span class="h3">Here are a few jeans we found that will fit you perfectly:</span>
 
 
@@ -94,6 +93,16 @@
             <a class="play-pause"></a>
             <ol class="indicator"></ol>
         </div>
+    </br></br></br>
+        <div>
+            <span class="h3">If you have a particular brand in mind, try searching:</span>
+            <div class="input-group">
+                <input class="form-control" style="text-align:center;font-size:25px;border:none;height:50px;background:transparent;box-shadow: inset 0 -1px 0px;" type="text" value="Brand" id="brandInput">
+                <span class="input-group-addon" style="background: transparent;border: none;padding: 0px;margin: 0px;">
+                    <img src="../static/img/loupe.svg" style="height: 35px;background: transparent;padding: 0px;margin: 0px;">
+                </span>
+            </div>
+        </div>
     </div>
 </header>
 
@@ -105,9 +114,12 @@
 </div>
 <div id="links">
     <a href="../static/img/jeans1.jpg" title="Jean 1">
-</a><a href="../static/img/jeans1.jpg" title="Jean 2">
-</a><a href="../static/img/jeans1.jpg" title="Jean 3">
+</a><a href="../static/img/jeans2.jpg" title="Jean 2">
+</a><a href="../static/img/jeans3.jpg" title="Jean 3">
 </a>
+</div>
+<div class="alert alert-success fade show" role="alert">
+    Your jeans have been successfully submitted!
 </div>
 <!-- jQuery -->
 <script src="../static/vendor/jquery/jquery.min.js"></script>
@@ -125,13 +137,13 @@
 <script src="../static/js/lib/backbone.js"></script>
 <script>
     $(document).ready(function(){
-        var w = Math.round(location.href.substring(location.href.indexOf('?w')+3, location.href.lastIndexOf('&')), 2);
-        var h = Math.round(location.href.substring(location.href.indexOf('&h')+3));
+        var h = Math.round(location.href.substring(location.href.indexOf('?w')+3, location.href.lastIndexOf('&')), 2);
+        var w = Math.round(location.href.substring(location.href.indexOf('&h')+3));
         if(!Number.isNaN(w)&& !Number.isNaN(h)&&w>10&&w<50&&h>10&&h<50){
-            $('#size').text("Your Perfect Size has been calculated:  ");
+            $('#size').text("Jeans have been calculated: ");
             $('#size2').text(h.toString()+ " X " + w.toString())}
         else
-            $('#size').text("We could not calculate your Perfect Size.  Please try again!");
+            $('#size').text("We could not calculate jean size.  Please try again!");
 
 
     });
@@ -140,13 +152,17 @@
 <script src="../static/js/blueimp-gallery.min.js"></script>
 
 <script>
-    blueimp.Gallery(
+    $(window).load(function(){
+        $(".alert").alert('show')    });
+    var links = ["https://www.amazon.com/Mavi-Womens-Alexa-Nolita-Skinny/dp/B00XMZ8OIU","https://www.amazon.com/Levis-Womens-515-Bootcut-Jean/dp/B0018P397W","https://www.amazon.com/Silver-Jeans-Mens-Gordie-Straight/dp/B00K6F64UE"];
+    var gallery = blueimp.Gallery(
         document.getElementById('links').getElementsByTagName('a'),
         {
             container: '#blueimp-gallery-carousel',
             carousel: true
         }
     );
+    $('#blueimp-gallery-carousel').on('click',function(){window.location=links[gallery.getIndex()]});
 </script>
 </body>
 
