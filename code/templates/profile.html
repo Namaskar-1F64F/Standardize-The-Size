@@ -29,6 +29,7 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <link rel="stylesheet" href="../static/css/blueimp-gallery.min.css">
 
 </head>
 
@@ -73,13 +74,25 @@
         <div class="row">
             <div class="col-lg-12">
                 <span style="width: 100%;right: 0;font-size: 19px;">Your jeans have been successfully submitted!</span>
-                <span></br>We have calculated your Perfect Fit size to be 38x20.</br> Here are a few jeans we found that will fit you perfectly:</span>
+                </br></br>
 
-                <btn class="btn btn-primary m-t-10" id="imgBox" style="display: block;margin:auto;max-height:200px;max-width:200px;background: #656CCA;background-position:50% 50%;height: 350px;width: 100%;">
-                    <img class="img-responsive" src="../static/img/clothes.svg" alt="" style="width: 50%;top: 26%;position: relative;max-width: 200px;max-height: 200px;">                    </btn>
+                    <span id="size" class="h1"></span>
+            </br>
+                <span id="size2" class="h1"></span>
+                    </br></br>
+                    <span class="h3">Here are a few jeans we found that will fit you perfectly:</span>
+
 
 
             </div>
+        </div>
+        <div id="blueimp-gallery-carousel" class="blueimp-gallery blueimp-gallery-carousel">
+            <div class="slides"></div>
+            <h3 class="title"></h3>
+            <a class="prev">‹</a>
+            <a class="next">›</a>
+            <a class="play-pause"></a>
+            <ol class="indicator"></ol>
         </div>
     </div>
 </header>
@@ -90,7 +103,12 @@
         <i class="fa fa-chevron-up"></i>
     </a>
 </div>
-
+<div id="links">
+    <a href="../static/img/jeans1.jpg" title="Jean 1">
+</a><a href="../static/img/jeans1.jpg" title="Jean 2">
+</a><a href="../static/img/jeans1.jpg" title="Jean 3">
+</a>
+</div>
 <!-- jQuery -->
 <script src="../static/vendor/jquery/jquery.min.js"></script>
 
@@ -101,14 +119,34 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
 <!-- Theme JavaScript -->
-<script src="../static/js/freelancer.min.js"></script>
-<script src="../static/js/app.js"></script>
+<script src="../static/js/app/app.js"></script>
 
 <script src="../static/js/lib/underscore.js"></script>
 <script src="../static/js/lib/backbone.js"></script>
-<script>var last = window.location.href.substr(window.location.href.lastIndexOf('/') + 1);
+<script>
+    $(document).ready(function(){
+        var w = Math.round(location.href.substring(location.href.indexOf('?w')+3, location.href.lastIndexOf('&')), 2);
+        var h = Math.round(location.href.substring(location.href.indexOf('&h')+3));
+        if(!Number.isNaN(w)&& !Number.isNaN(h)&&w>10&&w<50&&h>10&&h<50){
+            $('#size').text("Your Perfect Size has been calculated:  ");
+            $('#size2').text(h.toString()+ " X " + w.toString())}
+        else
+            $('#size').text("We could not calculate your Perfect Size.  Please try again!");
 
-$('#imgBox').on('click',function(){window.location.href = window.location.href.replace(last, "upload.html");});
+
+    });
+</script>
+
+<script src="../static/js/blueimp-gallery.min.js"></script>
+
+<script>
+    blueimp.Gallery(
+        document.getElementById('links').getElementsByTagName('a'),
+        {
+            container: '#blueimp-gallery-carousel',
+            carousel: true
+        }
+    );
 </script>
 </body>
 
